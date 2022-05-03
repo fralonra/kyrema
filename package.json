@@ -1,0 +1,36 @@
+{
+  "name": "kyrema",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    "import": "./index.esm.mjs",
+    "require": "./lib/index.js"
+  },
+  "files": [
+    "lib",
+    "index.esm.mjs"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "lint": "tsc --noEmit --noUnusedLocals true --noUnusedParameters true",
+    "prepublish": "npm run build",
+    "test": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fralonra/kyrema.git"
+  },
+  "keywords": [],
+  "author": "zoron (https://github.com/fralonra/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fralonra/kyrema/issues"
+  },
+  "homepage": "https://github.com/fralonra/kyrema#readme",
+  "devDependencies": {
+    "typescript": "^4.6.3"
+  }
+}
