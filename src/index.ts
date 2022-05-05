@@ -22,19 +22,25 @@ function kyrema<T>(
   }
 
   const centroids: T[] = []
-  let tryTimes = 0
-  let idx = 0
-  let step = Math.floor((data.length - 1) / (k - 1))
+  let lastLoopStartIdx = 0
+  let idx = lastLoopStartIdx
+  let step = decideStep()
   while (centroids.length < k) {
-    if (++tryTimes >= k * 100) {
-      throw 'Tried to find centroids too many times. Please specify centroids manually.'
+    if (lastLoopStartIdx > data.length - 1) {
+      throw 'No enough centroids found. Please specify a smaller k.'
     }
 
     const centroid = data[idx]
     if (centroids.every((c) => !centroidEqualator(c, centroid))) {
       centroids.push(centroid)
     } else {
-      step = Math.floor((data.length - 1 - idx) / (k - centroids.length))
+      step = decideStep()
+      if (step <= 0) {
+        lastLoopStartIdx++
+        idx = lastLoopStartIdx
+        step = decideStep()
+        continue
+      }
     }
     idx += step
   }
@@ -48,6 +54,10 @@ function kyrema<T>(
     centroidEqualator,
     maxTry
   )
+
+  function decideStep(): number {
+    return Math.floor((data.length - 1 - idx) / (k - centroids.length))
+  }
 }
 
 function kyremaWithCentroids<T>(
