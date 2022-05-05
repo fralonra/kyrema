@@ -115,3 +115,4 @@ function kyremaWithCentroids<T>(
 }
 
 export { kyrema, kyremaWithCentroids }
+export type { Centroid }
