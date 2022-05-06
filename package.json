@@ -23,7 +23,11 @@
     "type": "git",
     "url": "git+https://github.com/fralonra/kyrema.git"
   },
-  "keywords": [],
+  "keywords": [
+    "cluster",
+    "clustering",
+    "k-means"
+  ],
   "author": "zoron (https://github.com/fralonra/)",
   "license": "MIT",
   "bugs": {
